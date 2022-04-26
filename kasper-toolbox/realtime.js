@@ -5,15 +5,18 @@ const fetch = require('node-fetch');
 let socket, pingTimer;
 let eventDict = {};
 
+const unregisterEvent = (eventName) => {
+  socket.removeAllListeners(eventName);
+  delete eventDict[eventName];
+};
+
 module.exports = {
   registerEvent: (eventName, func) => {
+    unregisterEvent(eventName);
     socket.on(eventName, func);
     eventDict[eventName] = func;
   },
-  unregisterEvent: (eventName) => {
-    socket.removeAllListeners(eventName);
-    delete eventDict[eventName];
-  },
+  unregisterEvent: unregisterEvent,
   connectSocket: (connectionCallback) => {
     const { SESSION_TOKEN }  = require('./data/auth');
     const { SERVER_ROOT }  = require('./data/constants');

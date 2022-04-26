@@ -46,14 +46,19 @@ manager.addDocument('fa', 'فعلا', 'greetings.bye');
 manager.addDocument('fa', 'تا بعد', 'greetings.bye');
 manager.addDocument('fa', 'میبینمت', 'greetings.bye');
 manager.addDocument('fa', 'حالت چطوره ؟', 'me.moodhow');
+manager.addDocument('fa', 'حالت چطوره', 'me.moodhow');
 manager.addDocument('fa', 'حالت خوبه ؟', 'me.moodyesno');
+manager.addDocument('fa', 'حالت خوبه', 'me.moodyesno');
 manager.addDocument('fa', 'خوب هستی ؟', 'me.moodyesno');
+manager.addDocument('fa', 'خوب هستی', 'me.moodyesno');
 
 // Train also the NLG
-manager.addAnswer('fa', 'greetings.hello', 'به به . سلام .');
-manager.addAnswer('fa', 'greetings.bye', 'مراقب خودت باش . فعلا .');
-manager.addAnswer('fa', 'me.moodhow', 'خیلی خوبم . ممنونم .');
-manager.addAnswer('fa', 'me.moodyesno', 'آره . حالم خیلی خوبه . ممنون .');
+manager.addAnswer('fa', 'greetings.hello', 'bah bah . salam !');
+manager.addAnswer('fa', 'greetings.bye', 'felan . moraghebe khodet bash .');
+manager.addAnswer('fa', 'me.moodhow', 'mamnoonam . kheyli khubam .');
+manager.addAnswer('fa', 'me.moodhow', 'awliam . to chetori ?');
+manager.addAnswer('fa', 'me.moodyesno', 'areh . mamnoon . kheyli khubam .');
+manager.addAnswer('fa', 'me.moodyesno', 'areh . kheyli khubam . to khubi ?');
 
 (async () => {
   await manager.train();
