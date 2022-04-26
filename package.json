@@ -1,0 +1,19 @@
+{
+  "name": "my-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bot.js",
+  "scripts": {
+    "start": "nodemon",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "node-fetch": "^2.0.0",
+    "node-nlp": "^4.23.5",
+    "python-bridge": "^1.1.0",
+    "python-shell": "^3.0.1",
+    "socket.io-client": "^4.4.0"
+  }
+}

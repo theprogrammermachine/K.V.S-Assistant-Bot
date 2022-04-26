@@ -1,0 +1,569 @@
+{
+  "settings": {
+    "languages": [
+      "fa"
+    ],
+    "nlu": {
+      "useNoneFeature": false
+    },
+    "forcfaER": true,
+    "tag": "nlp",
+    "threshold": 0.5,
+    "autoLoad": true,
+    "autoSave": true,
+    "modelFileName": "model.nlp",
+    "calculateSentiment": true
+  },
+  "nluManager": {
+    "settings": {
+      "tag": "nlu-manager",
+      "useNoneFeature": false
+    },
+    "locales": [
+      "fa"
+    ],
+    "languageNames": {},
+    "domainManagers": {
+      "fa": {
+        "settings": {
+          "locale": "fa",
+          "useNoneFeature": false,
+          "trainByDomain": false,
+          "tag": "domain-manager-fa",
+          "nluByDomain": {
+            "default": {
+              "className": "NeuralNlu",
+              "settings": {}
+            }
+          },
+          "useStemDict": true
+        },
+        "stemDict": {
+          "سلام": {
+            "intent": "greetings.hello",
+            "domain": "default"
+          },
+          "درود": {
+            "intent": "greetings.hello",
+            "domain": "default"
+          },
+          "سلام,علیک": {
+            "intent": "greetings.hello",
+            "domain": "default"
+          },
+          "سلام,علیکم": {
+            "intent": "greetings.hello",
+            "domain": "default"
+          },
+          "خداحافظ": {
+            "intent": "greetings.bye",
+            "domain": "default"
+          },
+          "بدرود": {
+            "intent": "greetings.bye",
+            "domain": "default"
+          },
+          "بای": {
+            "intent": "greetings.bye",
+            "domain": "default"
+          },
+          "بابای": {
+            "intent": "greetings.bye",
+            "domain": "default"
+          },
+          "بعدا,میبینمت": {
+            "intent": "greetings.bye",
+            "domain": "default"
+          },
+          "فعلا": {
+            "intent": "greetings.bye",
+            "domain": "default"
+          },
+          "بعد,تا": {
+            "intent": "greetings.bye",
+            "domain": "default"
+          },
+          "میبینمت": {
+            "intent": "greetings.bye",
+            "domain": "default"
+          },
+          "؟,حالت,چطوره": {
+            "intent": "me.moodhow",
+            "domain": "default"
+          },
+          "؟,حالت,خوبه": {
+            "intent": "me.moodyesno",
+            "domain": "default"
+          },
+          "؟,خوب,هستی": {
+            "intent": "me.moodyesno",
+            "domain": "default"
+          }
+        },
+        "intentDict": {
+          "greetings.hello": "default",
+          "greetings.bye": "default",
+          "me.moodhow": "default",
+          "me.moodyesno": "default"
+        },
+        "sentences": [
+          {
+            "domain": "default",
+            "utterance": "سلام",
+            "intent": "greetings.hello"
+          },
+          {
+            "domain": "default",
+            "utterance": "درود",
+            "intent": "greetings.hello"
+          },
+          {
+            "domain": "default",
+            "utterance": "سلام علیک",
+            "intent": "greetings.hello"
+          },
+          {
+            "domain": "default",
+            "utterance": "سلام علیکم",
+            "intent": "greetings.hello"
+          },
+          {
+            "domain": "default",
+            "utterance": "خداحافظ",
+            "intent": "greetings.bye"
+          },
+          {
+            "domain": "default",
+            "utterance": "بدرود",
+            "intent": "greetings.bye"
+          },
+          {
+            "domain": "default",
+            "utterance": "بای",
+            "intent": "greetings.bye"
+          },
+          {
+            "domain": "default",
+            "utterance": "بای بای",
+            "intent": "greetings.bye"
+          },
+          {
+            "domain": "default",
+            "utterance": "بابای",
+            "intent": "greetings.bye"
+          },
+          {
+            "domain": "default",
+            "utterance": "بعدا میبینمت",
+            "intent": "greetings.bye"
+          },
+          {
+            "domain": "default",
+            "utterance": "فعلا",
+            "intent": "greetings.bye"
+          },
+          {
+            "domain": "default",
+            "utterance": "تا بعد",
+            "intent": "greetings.bye"
+          },
+          {
+            "domain": "default",
+            "utterance": "میبینمت",
+            "intent": "greetings.bye"
+          },
+          {
+            "domain": "default",
+            "utterance": "حالت چطوره ؟",
+            "intent": "me.moodhow"
+          },
+          {
+            "domain": "default",
+            "utterance": "حالت خوبه ؟",
+            "intent": "me.moodyesno"
+          },
+          {
+            "domain": "default",
+            "utterance": "خوب هستی ؟",
+            "intent": "me.moodyesno"
+          }
+        ],
+        "domains": {
+          "master_domain": {
+            "settings": {
+              "locale": "fa",
+              "tag": "nlu-fa",
+              "keepStopwords": true,
+              "nonefeatureValue": 1,
+              "nonedeltaMultiplier": 1.2,
+              "spellCheck": false,
+              "spellCheckDistance": 1,
+              "filterZeros": true,
+              "log": true
+            },
+            "features": {
+              "سلام": 1,
+              "درود": 1,
+              "علیک": 1,
+              "علیکم": 1,
+              "خداحافظ": 1,
+              "بدرود": 1,
+              "بای": 1,
+              "بابای": 1,
+              "بعدا": 1,
+              "میبینمت": 1,
+              "فعلا": 1,
+              "تا": 1,
+              "بعد": 1,
+              "حالت": 1,
+              "چطوره": 1,
+              "؟": 1,
+              "خوبه": 1,
+              "خوب": 1,
+              "هستی": 1
+            },
+            "intents": {
+              "greetings.hello": 1,
+              "greetings.bye": 1,
+              "me.moodhow": 1,
+              "me.moodyesno": 1
+            },
+            "intentFeatures": {
+              "greetings.hello": {
+                "سلام": 1,
+                "درود": 1,
+                "علیک": 1,
+                "علیکم": 1
+              },
+              "greetings.bye": {
+                "خداحافظ": 1,
+                "بدرود": 1,
+                "بای": 1,
+                "بابای": 1,
+                "بعدا": 1,
+                "میبینمت": 1,
+                "فعلا": 1,
+                "تا": 1,
+                "بعد": 1
+              },
+              "me.moodhow": {
+                "حالت": 1,
+                "چطوره": 1,
+                "؟": 1
+              },
+              "me.moodyesno": {
+                "حالت": 1,
+                "خوبه": 1,
+                "؟": 1,
+                "خوب": 1,
+                "هستی": 1
+              }
+            },
+            "featuresToIntent": {
+              "سلام": [
+                "greetings.hello"
+              ],
+              "درود": [
+                "greetings.hello"
+              ],
+              "علیک": [
+                "greetings.hello"
+              ],
+              "علیکم": [
+                "greetings.hello"
+              ],
+              "خداحافظ": [
+                "greetings.bye"
+              ],
+              "بدرود": [
+                "greetings.bye"
+              ],
+              "بای": [
+                "greetings.bye"
+              ],
+              "بابای": [
+                "greetings.bye"
+              ],
+              "بعدا": [
+                "greetings.bye"
+              ],
+              "میبینمت": [
+                "greetings.bye"
+              ],
+              "فعلا": [
+                "greetings.bye"
+              ],
+              "تا": [
+                "greetings.bye"
+              ],
+              "بعد": [
+                "greetings.bye"
+              ],
+              "حالت": [
+                "me.moodhow",
+                "me.moodyesno"
+              ],
+              "چطوره": [
+                "me.moodhow"
+              ],
+              "؟": [
+                "me.moodhow",
+                "me.moodyesno"
+              ],
+              "خوبه": [
+                "me.moodyesno"
+              ],
+              "خوب": [
+                "me.moodyesno"
+              ],
+              "هستی": [
+                "me.moodyesno"
+              ]
+            },
+            "neuralNetwork": {
+              "settings": {
+                "useNoneFeature": false,
+                "locale": "fa",
+                "tag": "nlu-fa",
+                "keepStopwords": true,
+                "nonefeatureValue": 1,
+                "nonedeltaMultiplier": 1.2,
+                "spellCheck": false,
+                "spellCheckDistance": 1,
+                "filterZeros": true
+              },
+              "features": [
+                "سلام",
+                "درود",
+                "علیک",
+                "علیکم",
+                "خداحافظ",
+                "بدرود",
+                "بای",
+                "بابای",
+                "بعدا",
+                "میبینمت",
+                "فعلا",
+                "تا",
+                "بعد",
+                "حالت",
+                "چطوره",
+                "؟",
+                "خوبه",
+                "خوب",
+                "هستی"
+              ],
+              "intents": [
+                "greetings.hello",
+                "greetings.bye",
+                "me.moodhow",
+                "me.moodyesno"
+              ],
+              "perceptrons": [
+                [
+                  11.116287231445312,
+                  11.702164649963379,
+                  0.8204033970832825,
+                  0.829616129398346,
+                  -2.5196523666381836,
+                  -2.5169811248779297,
+                  -2.5312931537628174,
+                  -2.512509822845459,
+                  -0.7689725160598755,
+                  -2.508251428604126,
+                  -2.509122610092163,
+                  -1.2640588283538818,
+                  -1.2640588283538818,
+                  -0.7888827919960022,
+                  -0.3894130289554596,
+                  -1.369708776473999,
+                  -0.37266892194747925,
+                  -0.580462634563446,
+                  -0.580462634563446,
+                  2.533822513139596
+                ],
+                [
+                  -8.368085861206055,
+                  -8.345078468322754,
+                  -1.7280327081680298,
+                  -1.5828360319137573,
+                  5.897266387939453,
+                  5.898555755615234,
+                  5.901750087738037,
+                  5.894993305206299,
+                  0.37248697876930237,
+                  5.6735615730285645,
+                  5.900452136993408,
+                  2.9539437294006348,
+                  2.9539437294006348,
+                  -2.7125887870788574,
+                  -1.415339708328247,
+                  -4.62359619140625,
+                  -1.2208361625671387,
+                  -1.8935989141464233,
+                  -1.8935989141464233,
+                  8.390911533413414
+                ],
+                [
+                  -0.2665417492389679,
+                  -0.18874990940093994,
+                  -0.0722445696592331,
+                  -0.0638154074549675,
+                  -0.18861736357212067,
+                  -0.18853759765625,
+                  -0.21199290454387665,
+                  -0.18839173018932343,
+                  -0.07881154865026474,
+                  -0.1885170042514801,
+                  -0.18825489282608032,
+                  -0.10072313994169235,
+                  -0.10072313994169235,
+                  3.2381882667541504,
+                  8.743433952331543,
+                  2.0956897735595703,
+                  -5.505890369415283,
+                  -1.1421805620193481,
+                  -1.1421805620193481,
+                  0.18867097122646073
+                ],
+                [
+                  -0.7402852773666382,
+                  -0.4814387857913971,
+                  -0.20426693558692932,
+                  -0.18065392971038818,
+                  -0.46689292788505554,
+                  -0.45844557881355286,
+                  -0.588153064250946,
+                  -0.4432416260242462,
+                  -0.2244243621826172,
+                  -0.49987849593162537,
+                  -0.43556323647499084,
+                  -0.27729102969169617,
+                  -0.27729102969169617,
+                  0.9708524942398071,
+                  -6.63794469833374,
+                  5.270084857940674,
+                  7.609466075897217,
+                  4.298890590667725,
+                  4.298890590667725,
+                  0.41775332307778074
+                ]
+              ]
+            }
+          }
+        }
+      }
+    },
+    "intentDomains": {},
+    "extraSentences": [
+      [
+        "fa",
+        "سلام"
+      ],
+      [
+        "fa",
+        "درود"
+      ],
+      [
+        "fa",
+        "سلام علیک"
+      ],
+      [
+        "fa",
+        "سلام علیکم"
+      ],
+      [
+        "fa",
+        "خداحافظ"
+      ],
+      [
+        "fa",
+        "بدرود"
+      ],
+      [
+        "fa",
+        "بای"
+      ],
+      [
+        "fa",
+        "بای بای"
+      ],
+      [
+        "fa",
+        "بابای"
+      ],
+      [
+        "fa",
+        "بعدا میبینمت"
+      ],
+      [
+        "fa",
+        "فعلا"
+      ],
+      [
+        "fa",
+        "تا بعد"
+      ],
+      [
+        "fa",
+        "میبینمت"
+      ],
+      [
+        "fa",
+        "حالت چطوره ؟"
+      ],
+      [
+        "fa",
+        "حالت خوبه ؟"
+      ],
+      [
+        "fa",
+        "خوب هستی ؟"
+      ]
+    ]
+  },
+  "ner": {
+    "settings": {
+      "tag": "ner",
+      "entityPreffix": "%",
+      "entitySuffix": "%"
+    },
+    "rules": {}
+  },
+  "nlgManager": {
+    "settings": {
+      "tag": "nlg-manager"
+    },
+    "responses": {
+      "fa": {
+        "greetings.hello": [
+          {
+            "answer": "به به . سلام ."
+          }
+        ],
+        "greetings.bye": [
+          {
+            "answer": "مراقب خودت باش . فعلا ."
+          }
+        ],
+        "me.moodhow": [
+          {
+            "answer": "خیلی خوبم . ممنونم ."
+          }
+        ],
+        "me.moodyesno": [
+          {
+            "answer": "آره . حالم خیلی خوبه . ممنون ."
+          }
+        ]
+      }
+    }
+  },
+  "actionManager": {
+    "settings": {
+      "tag": "action-manager"
+    },
+    "actions": {}
+  },
+  "slotManager": {}
+}
