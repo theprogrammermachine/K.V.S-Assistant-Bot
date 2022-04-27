@@ -51,6 +51,11 @@ manager.addDocument('fa', 'حالت خوبه ؟', 'me.moodyesno');
 manager.addDocument('fa', 'حالت خوبه', 'me.moodyesno');
 manager.addDocument('fa', 'خوب هستی ؟', 'me.moodyesno');
 manager.addDocument('fa', 'خوب هستی', 'me.moodyesno');
+manager.addDocument('fa', 'چه خبر ؟', 'global.news');
+manager.addDocument('fa', 'چه خبر', 'global.news');
+manager.addDocument('fa', 'چه خبر هایی داری ؟', 'global.news');
+manager.addDocument('fa', 'چه خبر هایی داری', 'global.news');
+manager.addDocument('fa', 'اوضاع خوبه ؟', 'global.mainmood');
 
 // Train also the NLG
 manager.addAnswer('fa', 'greetings.hello', 'bah bah . salam !');
@@ -59,6 +64,11 @@ manager.addAnswer('fa', 'me.moodhow', 'mamnoonam . kheyli khubam .');
 manager.addAnswer('fa', 'me.moodhow', 'awliam . to chetori ?');
 manager.addAnswer('fa', 'me.moodyesno', 'areh . mamnoon . kheyli khubam .');
 manager.addAnswer('fa', 'me.moodyesno', 'areh . kheyli khubam . to khubi ?');
+manager.addAnswer('fa', 'global.news', 'salamati.');
+manager.addAnswer('fa', 'global.mainmood', 'bad nist.');
+
+let sentencesAfterSentences = [];
+let tempSentence = undefined;
 
 (async () => {
   await manager.train();
@@ -77,6 +87,8 @@ manager.addAnswer('fa', 'me.moodyesno', 'areh . kheyli khubam . to khubi ?');
     registerEvent("message-added", async ({ message }) => {
       const response = await manager.process('fa', message.text);
       console.log(response);
+      if (response.answer === undefined) return;
+      tempSentence = response.answer;
       await createTextMessage(message.roomId, response.answer);
     });
     registerEvent(
