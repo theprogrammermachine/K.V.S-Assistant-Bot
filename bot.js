@@ -15,8 +15,15 @@ const {
   piecesStates,
 } = require("./gui");
 const { gui } = require("./kasper-toolbox/gui");
-var {spawn} = require('child_process');
-var readline      = require('readline');
+const fetch = require('node-fetch');
+
+let temperature, humidity;
+let checkWeather = async () => {
+    let rawResponse = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${'rasht'}&units=metric&appid=${'65c56fc2ad2260bd76d04c255e65e491'}`);
+    let response = await rawResponse.json();
+    temperature = response.main.temp;
+    humidity = response.main.humidity;
+};
 
 setBotId("82f92733-3fd2-4662-989e-4d93938108d3-1650890118127");
 setAuthToken(
@@ -56,16 +63,26 @@ manager.addDocument('fa', 'چه خبر', 'global.news');
 manager.addDocument('fa', 'چه خبر هایی داری ؟', 'global.news');
 manager.addDocument('fa', 'چه خبر هایی داری', 'global.news');
 manager.addDocument('fa', 'اوضاع خوبه ؟', 'global.mainmood');
+manager.addDocument('fa', 'ساعت چنده ؟', 'globalinfo.time');
+manager.addDocument('fa', 'ساعت چنده', 'globalinfo.time');
+manager.addDocument('fa', 'دما چنده ؟', 'globalinfo.temperature');
+manager.addDocument('fa', 'دما چنده', 'globalinfo.temperature');
+manager.addDocument('fa', 'دما چقدره ؟', 'globalinfo.temperature');
+manager.addDocument('fa', 'دما چقدره', 'globalinfo.temperature');
+manager.addDocument('fa', 'هوا چند درجست ؟', 'globalinfo.temperature');
+manager.addDocument('fa', 'هوا چند درجست', 'globalinfo.temperature');
 
 // Train also the NLG
-manager.addAnswer('fa', 'greetings.hello', 'bah bah . salam !');
-manager.addAnswer('fa', 'greetings.bye', 'felan . moraghebe khodet bash .');
-manager.addAnswer('fa', 'me.moodhow', 'mamnoonam . kheyli khubam .');
-manager.addAnswer('fa', 'me.moodhow', 'awliam . to chetori ?');
-manager.addAnswer('fa', 'me.moodyesno', 'areh . mamnoon . kheyli khubam .');
-manager.addAnswer('fa', 'me.moodyesno', 'areh . kheyli khubam . to khubi ?');
-manager.addAnswer('fa', 'global.news', 'salamati.');
-manager.addAnswer('fa', 'global.mainmood', 'bad nist.');
+manager.addAnswer('fa', 'greetings.hello', 'hi !');
+manager.addAnswer('fa', 'greetings.bye', 'see you later. take care .');
+manager.addAnswer('fa', 'me.moodhow', "thanks. i'm fine .");
+manager.addAnswer('fa', 'me.moodhow', "perfect . what about you ?");
+manager.addAnswer('fa', 'me.moodyesno', "yes, i'm fine . thanks");
+manager.addAnswer('fa', 'me.moodyesno', "yes . i'm fine . what about you ?");
+manager.addAnswer('fa', 'global.news', 'everything is good .');
+manager.addAnswer('fa', 'global.mainmood', 'fine .');
+manager.addAnswer('fa', 'globalinfo.time', 'act:currentTime');
+manager.addAnswer('fa', 'globalinfo.temperature', 'act:currentTemperature');
 
 let sentencesAfterSentences = [];
 let tempSentence = undefined;
@@ -73,6 +90,9 @@ let tempSentence = undefined;
 (async () => {
   await manager.train();
   manager.save();
+
+  await checkWeather();
+  setInterval(checkWeather, 60000);
 
   console.log("starting bot...");
   let { bot, botSecret, session, status } = await login();
@@ -89,7 +109,15 @@ let tempSentence = undefined;
       console.log(response);
       if (response.answer === undefined) return;
       tempSentence = response.answer;
-      await createTextMessage(message.roomId, response.answer);
+      if (response.answer === 'act:currentTime') {
+        await createTextMessage(message.roomId, "it's " + new Date().toLocaleTimeString());
+      }
+      else if (response.answer === 'act:currentTemperature') {
+        await createTextMessage(message.roomId, "temperature is " + temperature + " centigrade and humidity is " + humidity + " percent .");
+      }
+      else {
+        await createTextMessage(message.roomId, response.answer);
+      }
     });
     registerEvent(
       "request_initial_gui",
