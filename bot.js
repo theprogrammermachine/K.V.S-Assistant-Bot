@@ -25,9 +25,9 @@ let checkWeather = async () => {
     humidity = response.main.humidity;
 };
 
-setBotId("82f92733-3fd2-4662-989e-4d93938108d3-1650890118127");
+setBotId("fba8372a-7499-43af-a43d-d1852c46e6b6-1652467907618");
 setAuthToken(
-  "HMBlIgZXlhzXjqkgtZeMhL7DQzfgHVwzHfqCTZdUuYTRkmaX8B7u7Fbw27ywmIx0"
+  "G38LksNd4gbqa12aNTclkTZl8CFUJ6e9Av6Wv178MqGhlYcFNWvxeasdGZIeaK8D"
 );
 
 let reservedActions = {};
